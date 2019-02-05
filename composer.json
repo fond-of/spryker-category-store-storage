@@ -22,7 +22,7 @@
   ],
   "require": {
     "php": ">=7.1",
-    "spryker/category-storage": "~1.2.0",
+    "spryker/category-storage": "~1.2.0"
   },
   "require-dev": {
     "spryker/code-sniffer": "^0.11",
