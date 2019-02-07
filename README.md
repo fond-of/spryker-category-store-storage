@@ -4,6 +4,7 @@
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://packagist.org/packages/fond-of-spryker/category-store-storage)
 
 Category Store Storage
+* Add Store Column and Store Name in the Key
 
 ## Installation
 
