@@ -3,7 +3,11 @@
 namespace FondOfSpryker\Zed\CategoryStoreStorage\Business\Storage;
 
 use Generated\Shared\Transfer\CategoryNodeStorageTransfer;
+use Orm\Zed\Category\Persistence\Base\SpyCategoryNode;
+use Orm\Zed\Category\Persistence\SpyCategoryNodeQuery;
 use Orm\Zed\CategoryStorage\Persistence\SpyCategoryNodeStorage;
+use Orm\Zed\Store\Persistence\SpyStoreQuery;
+use Spryker\Shared\Log\LoggerTrait;
 use Spryker\Zed\CategoryStorage\Business\Storage\CategoryNodeStorage as SprykerCategoryNodeStorage;
 
 class CategoryNodeStorage extends SprykerCategoryNodeStorage
@@ -17,6 +21,8 @@ class CategoryNodeStorage extends SprykerCategoryNodeStorage
      */
     protected function storeDataSet(CategoryNodeStorageTransfer $categoryNodeStorageTransfer, $localeName, ?SpyCategoryNodeStorage $spyCategoryNodeStorageEntity = null)
     {
+        $categoryNodeStorageTransfer->getNodeId();
+
         if ($spyCategoryNodeStorageEntity === null) {
             $spyCategoryNodeStorageEntity = new SpyCategoryNodeStorage();
         }
@@ -32,10 +38,30 @@ class CategoryNodeStorage extends SprykerCategoryNodeStorage
         $categoryNodeNodeData = $this->utilSanitize->arrayFilterRecursive($categoryNodeStorageTransfer->toArray());
         $spyCategoryNodeStorageEntity->setFkCategoryNode($categoryNodeStorageTransfer->getNodeId());
         $spyCategoryNodeStorageEntity->setData($categoryNodeNodeData);
-        $spyCategoryNodeStorageEntity->setStore($this->store->getStoreName());
+        $spyCategoryNodeStorageEntity->setStore($this->getStoreName($categoryNodeStorageTransfer));
         $spyCategoryNodeStorageEntity->setLocale($localeName);
         $spyCategoryNodeStorageEntity->setIsSendingToQueue($this->isSendingToQueue);
         $spyCategoryNodeStorageEntity->save();
 
+    }
+
+    /**
+     * Retreieve Store Name
+     *
+     * @param \Generated\Shared\Transfer\CategoryNodeStorageTransfer $categoryNodeStorageTransfer
+     *
+     * @return string
+     */
+    protected function getStoreName(CategoryNodeStorageTransfer $categoryNodeStorageTransfer)
+    {
+        $categoryNodeEntity = SpyCategoryNodeQuery::create()
+            ->filterByIdCategoryNode($categoryNodeStorageTransfer->getNodeId())
+            ->findOne();
+
+        $storeEntity = SpyStoreQuery::create()
+            ->filterByIdStore($categoryNodeEntity->getFkStore())
+            ->findOne();
+
+        return $storeEntity->getName();
     }
 }
