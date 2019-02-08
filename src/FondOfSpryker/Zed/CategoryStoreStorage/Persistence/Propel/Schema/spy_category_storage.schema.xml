@@ -5,6 +5,12 @@
           namespace="Orm\Zed\CategoryStorage\Persistence"
           package="src.Orm.Zed.CategoryStorage.Persistence">
 
+    <table name="spy_category_tree_storage">
+        <behavior name="synchronization">
+            <parameter name="store" required="true"/>
+        </behavior>
+    </table>
+
     <table name="spy_category_node_storage">
         <behavior name="synchronization">
             <parameter name="store" required="true"/>

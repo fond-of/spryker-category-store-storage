@@ -23,4 +23,16 @@ class CategoryStoreStorageFacade extends SprykerCategoryStorageFacade
     {
         $this->getFactory()->createCategoryNodeStorage()->publish($categoryNodeIds);
     }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
+     * @return void
+     */
+    public function publishCategoryTree()
+    {
+        $this->getFactory()->createCategoryTreeStorage()->publish();
+    }
 }
