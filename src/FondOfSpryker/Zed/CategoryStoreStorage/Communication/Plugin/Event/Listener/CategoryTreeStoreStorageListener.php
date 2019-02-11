@@ -11,7 +11,7 @@ use Spryker\Zed\CategoryStorage\Communication\Plugin\Event\Listener\CategoryTree
 /**
  * @method \Spryker\Zed\CategoryStorage\Persistence\CategoryStorageQueryContainerInterface getQueryContainer()
  * @method \Spryker\Zed\CategoryStorage\Communication\CategoryStorageCommunicationFactory getFactory()
- * @method \FondOfSpryker\Zed\CategoryStorage\Business\CategoryStoreStorageFacadeInterface getFacade()
+ * @method \FondOfSpryker\Zed\CategoryStoreStorage\Business\CategoryStoreStorageFacadeInterface getFacade()
  * @method \Spryker\Zed\CategoryStorage\CategoryStorageConfig getConfig()
  */
 class CategoryTreeStoreStorageListener extends SprykerCategoryTreeStorageListener
