@@ -1,0 +1,9 @@
+<?php
+
+namespace FondOfSpryker\Client\CategoryStoreStorage;
+
+use Spryker\Client\CategoryStorage\CategoryStorageDependencyProvider as SprykerCategoryStorageDependencyProvider;
+
+class CategoryStoreStorageDependencyProvider extends SprykerCategoryStorageDependencyProvider
+{
+}

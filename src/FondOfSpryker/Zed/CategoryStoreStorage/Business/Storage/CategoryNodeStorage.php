@@ -12,6 +12,8 @@ use Spryker\Zed\CategoryStorage\Business\Storage\CategoryNodeStorage as SprykerC
 
 class CategoryNodeStorage extends SprykerCategoryNodeStorage
 {
+    use LoggerTrait;
+
     /**
      * @param \Generated\Shared\Transfer\CategoryNodeStorageTransfer $categoryNodeStorageTransfer
      * @param string $localeName

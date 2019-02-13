@@ -2,6 +2,7 @@
 
 namespace FondOfSpryker\Zed\CategoryStoreStorage\Communication\Plugin\Event\Listener;
 
+use Spryker\Shared\Log\LoggerTrait;
 use Spryker\Zed\Category\Dependency\CategoryEvents;
 use Spryker\Zed\CategoryStorage\Communication\Plugin\Event\Listener\CategoryNodeStorageListener as SprykerCategoryNodeStorageListener;
 
@@ -11,6 +12,8 @@ use Spryker\Zed\CategoryStorage\Communication\Plugin\Event\Listener\CategoryNode
  */
 class CategoryNodeStoreStorageListener extends SprykerCategoryNodeStorageListener
 {
+    use LoggerTrait;
+
     /**
      * @api
      *

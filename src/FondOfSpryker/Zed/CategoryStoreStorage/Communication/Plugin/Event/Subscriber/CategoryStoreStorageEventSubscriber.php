@@ -4,12 +4,15 @@ namespace FondOfSpryker\Zed\CategoryStoreStorage\Communication\Plugin\Event\Subs
 
 use FondOfSpryker\Zed\CategoryStoreStorage\Communication\Plugin\Event\Listener\CategoryTreeStoreStorageListener;
 use FondOfSpryker\Zed\CategoryStoreStorage\Communication\Plugin\Event\Listener\CategoryNodeStoreStorageListener;
+use Spryker\Shared\Log\LoggerTrait;
 use Spryker\Zed\Category\Dependency\CategoryEvents;
 use Spryker\Zed\CategoryStorage\Communication\Plugin\Event\Subscriber\CategoryStorageEventSubscriber as SprykerCategoryStorageEventSubscriber;
 use Spryker\Zed\Event\Dependency\EventCollectionInterface;
 
 class CategoryStoreStorageEventSubscriber extends SprykerCategoryStorageEventSubscriber
 {
+    use LoggerTrait;
+
     /**
      * @api
      *
