@@ -5,12 +5,26 @@ namespace FondOfSpryker\Service\CategoryStoreStorage\Plugin\Synchronization;
 use Generated\Shared\Transfer\SynchronizationDataTransfer;
 use Spryker\Service\Kernel\AbstractPlugin;
 use Spryker\Service\Synchronization\Dependency\Plugin\SynchronizationKeyGeneratorPluginInterface;
+use Spryker\Service\Synchronization\Plugin\BaseKeyGenerator;
 
 /**
  * @method \FondOfSpryker\Service\CategoryStoreStorage\CategoryStoreStorageServiceFactory getFactory()
  */
 class CategoryStoreStorageSynchronizationKeyGeneratorPlugin extends AbstractPlugin implements SynchronizationKeyGeneratorPluginInterface
 {
+    /**
+     * @var string
+     */
+    protected $resourceName;
+
+    /**
+     * @param string $resourceName
+     */
+    public function __construct(string $resourceName)
+    {
+        $this->resourceName = $resourceName;
+    }
+
     /**
      * Specification:
      * - Generates storage or search key based on SynchronizationDataTransfer
@@ -30,8 +44,13 @@ class CategoryStoreStorageSynchronizationKeyGeneratorPlugin extends AbstractPlug
             $dataTransfer->setStore($storeName);
         }
 
-        return $this->getFactory()->getSynchronizationService()
-            ->getStorageKeyBuilder('')
-            ->generateKey($dataTransfer);
+        $synchronizationKeyGeneratorPlugin = $this->getFactory()->getSynchronizationService()
+            ->getStorageKeyBuilder('');
+
+        if ($synchronizationKeyGeneratorPlugin instanceof BaseKeyGenerator) {
+            $synchronizationKeyGeneratorPlugin->setResource($this->resourceName);
+        }
+
+        return $synchronizationKeyGeneratorPlugin->generateKey($dataTransfer);
     }
 }

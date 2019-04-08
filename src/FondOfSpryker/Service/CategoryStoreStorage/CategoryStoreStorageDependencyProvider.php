@@ -37,6 +37,8 @@ class CategoryStoreStorageDependencyProvider extends AbstractBundleDependencyPro
         $container[static::STORE] = function () {
             return Store::getInstance();
         };
+
+        return $container;
     }
 
     /**
