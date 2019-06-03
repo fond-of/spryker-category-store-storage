@@ -2,6 +2,7 @@
 
 namespace FondOfSpryker\Zed\CategoryStoreStorage\Communication\Plugin\Event\Subscriber;
 
+use FondOfSpryker\Zed\CategoryStoreStorage\Communication\Plugin\Event\Listener\CategoryNodeStorageCategoryStorageListener;
 use FondOfSpryker\Zed\CategoryStoreStorage\Communication\Plugin\Event\Listener\CategoryTreeStoreStorageListener;
 use FondOfSpryker\Zed\CategoryStoreStorage\Communication\Plugin\Event\Listener\CategoryNodeStoreStorageListener;
 use Spryker\Shared\Log\LoggerTrait;
@@ -221,5 +222,35 @@ class CategoryStoreStorageEventSubscriber extends SprykerCategoryStorageEventSub
     protected function addCategoryAttributeDeleteForTreeListener(EventCollectionInterface $eventCollection)
     {
         $eventCollection->addListenerQueued(CategoryEvents::ENTITY_SPY_CATEGORY_ATTRIBUTE_DELETE, new CategoryTreeStoreStorageListener());
+    }
+
+    /**
+     * @param \Spryker\Zed\Event\Dependency\EventCollectionInterface $eventCollection
+     *
+     * @return void
+     */
+    protected function addCategoryCreateListener(EventCollectionInterface $eventCollection)
+    {
+        $eventCollection->addListenerQueued(CategoryEvents::ENTITY_SPY_CATEGORY_CREATE, new CategoryNodeStorageCategoryStorageListener());
+    }
+
+    /**
+     * @param \Spryker\Zed\Event\Dependency\EventCollectionInterface $eventCollection
+     *
+     * @return void
+     */
+    protected function addCategoryUpdateListener(EventCollectionInterface $eventCollection)
+    {
+        $eventCollection->addListenerQueued(CategoryEvents::ENTITY_SPY_CATEGORY_UPDATE, new CategoryNodeStorageCategoryStorageListener());
+    }
+
+    /**
+     * @param \Spryker\Zed\Event\Dependency\EventCollectionInterface $eventCollection
+     *
+     * @return void
+     */
+    protected function addCategoryDeleteListener(EventCollectionInterface $eventCollection)
+    {
+        $eventCollection->addListenerQueued(CategoryEvents::ENTITY_SPY_CATEGORY_DELETE, new CategoryNodeStorageCategoryStorageListener());
     }
 }
