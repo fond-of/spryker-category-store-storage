@@ -9,8 +9,6 @@ use Spryker\Shared\Kernel\Store;
 class CategoryStoreStorageServiceFactory extends AbstractServiceFactory
 {
     /**
-     * @throws
-     *
      * @return \Spryker\Shared\Kernel\Store
      */
     public function getStore(): Store
@@ -19,8 +17,6 @@ class CategoryStoreStorageServiceFactory extends AbstractServiceFactory
     }
 
     /**
-     * @throws
-     *
      * @return \FondOfSpryker\Service\CategoryStoreStorage\Dependency\Service\CategoryStoreStorageToSynchronizationServiceInterface
      */
     public function getSynchronizationService(): CategoryStoreStorageToSynchronizationServiceInterface
