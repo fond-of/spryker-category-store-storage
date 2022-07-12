@@ -21,8 +21,8 @@
     }
   ],
   "require": {
-    "php": ">=7.2",
-    "spryker/category-storage": "^1.7.1"
+    "php": ">=7.3",
+    "spryker/category-storage": "^1.7.1 || ^2.4.0"
   },
   "require-dev": {
     "spryker/code-sniffer": "^0.14.7",
