@@ -5,19 +5,18 @@ namespace FondOfSpryker\Client\CategoryStoreStorage\Storage;
 use Generated\Shared\Transfer\SynchronizationDataTransfer;
 use Spryker\Client\CategoryStorage\Storage\CategoryNodeStorage as SprykerCategoryNodeStorage;
 use Spryker\Shared\CategoryStorage\CategoryStorageConstants;
-use Spryker\Shared\Kernel\Store;
 
 class CategoryNodeStorage extends SprykerCategoryNodeStorage implements CategoryNodeStorageInterface
 {
     /**
      * @param int $idCategoryNode
      * @param string $localeName
+     * @param string $storeName
      *
      * @return string
      */
-    protected function generateKey(int $idCategoryNode, string $localeName): string
+    protected function generateKey(int $idCategoryNode, string $localeName, string $storeName): string
     {
-        $storeName = Store::getInstance()->getStoreName();
         $synchronizationDataTransfer = new SynchronizationDataTransfer();
         $synchronizationDataTransfer->setReference($idCategoryNode);
         $synchronizationDataTransfer->setLocale($localeName);

@@ -9,7 +9,7 @@ use Spryker\Shared\CategoryStorage\CategoryStorageConstants;
 use Spryker\Shared\Kernel\Store;
 
 /**
- * @method \FondOfSpryker\Client\CategoryStoreStorage\CategoryStoreStorageFactory getFactory()
+ * @method \Spryker\Client\CategoryStorage\CategoryStorageFactory getFactory()
  */
 class UrlStorageCategoryNodeMapperPlugin extends SprykerUrlStorageCategoryNodeMapperPlugin
 {
